@@ -15,7 +15,7 @@
         <div class="sidebar-header">
             <div class="sidebar-brand">
                 <i class="fas fa-burn"></i>
-                <span>Iron Guard</span>
+                <span data-i18n="brandTitle">Iron Guard</span>
             </div>
             <button class="toggle-sidebar" id="toggleSidebar">
                 <i class="fas fa-bars"></i>
@@ -25,28 +25,28 @@
         <nav class="sidebar-nav">
             <a href="#dashboard" class="nav-item active" data-section="dashboard">
                 <i class="fas fa-th-large"></i>
-                <span>Dashboard</span>
+                <span data-i18n="dashboard">Dashboard</span>
             </a>
             <a href="#live-data" class="nav-item" data-section="live-data">
                 <i class="fas fa-broadcast-tower"></i>
-                <span>Live Data</span>
+                <span data-i18n="liveData">Live Data</span>
             </a>
             <a href="#graphs" class="nav-item" data-section="graphs">
                 <i class="fas fa-chart-line"></i>
-                <span>Graphs</span>
+                <span data-i18n="graphs">Graphs</span>
             </a>
             <a href="#history" class="nav-item" data-section="history">
                 <i class="fas fa-history"></i>
-                <span>History</span>
+                <span data-i18n="history">History</span>
             </a>
             <a href="#alerts" class="nav-item" data-section="alerts">
                 <i class="fas fa-bell"></i>
-                <span>Alerts</span>
+                <span data-i18n="alerts">Alerts</span>
                 <span class="alert-badge" id="alertBadge">3</span>
             </a>
             <a href="#settings" class="nav-item" data-section="settings">
                 <i class="fas fa-cog"></i>
-                <span>Settings</span>
+                <span data-i18n="settings">Settings</span>
             </a>
         </nav>
 
@@ -69,9 +69,10 @@
                 <p class="header-subtitle" id="sectionSubtitle">Real-time monitoring and analytics</p>
             </div>
             <div class="header-right">
+                <button class="lang-toggle" id="dashboardLangToggle">EN | AR</button>
                 <div class="connection-status">
                     <div class="status-dot connected" id="statusDot"></div>
-                    <span id="statusText">Connected</span>
+                    <span id="statusText" data-i18n="connected">Connected</span>
                 </div>
                 <div class="user-profile">
                     <img src="https://ui-avatars.com/api/?name=Admin+User&background=2196F3&color=fff" alt="User" class="profile-pic">
@@ -85,8 +86,8 @@
             <!-- Dashboard Section -->
             <section class="section-content active" id="dashboard">
                 <div class="section-header">
-                    <h2>Real-time Monitoring</h2>
-                    <span class="last-update">Last updated: <span id="lastUpdate">just now</span></span>
+                    <h2 data-i18n="realTimeMonitoring">Real-time Monitoring</h2>
+                    <span class="last-update" data-i18n="lastUpdated">Last updated: <span id="lastUpdate">just now</span></span>
                 </div>
 
                 <!-- Live Data Cards -->
@@ -148,15 +149,15 @@
                 <!-- Alerts Section -->
                 <div class="alerts-container">
                     <div class="section-header">
-                        <h3>Active Alerts</h3>
-                        <button class="clear-alerts-btn" id="clearAlertsBtn">Clear All</button>
+                        <h3 data-i18n="activeAlerts">Active Alerts</h3>
+                        <button class="clear-alerts-btn" id="clearAlertsBtn" data-i18n="clearAll">Clear All</button>
                     </div>
                     <div class="alerts-list" id="alertsList">
                         <div class="alert-item info-alert">
                             <i class="fas fa-info-circle"></i>
                             <div class="alert-content">
-                                <p class="alert-title">System Active</p>
-                                <p class="alert-message">Real-time monitoring is running smoothly</p>
+                                <p class="alert-title" data-i18n="systemActive">System Active</p>
+                                <p class="alert-message" data-i18n="realTimeRunning">Real-time monitoring is running smoothly</p>
                             </div>
                             <span class="alert-time">Just now</span>
                         </div>
@@ -167,7 +168,7 @@
             <!-- Live Data Section -->
             <section class="section-content" id="live-data">
                 <div class="section-header">
-                    <h2>Live Data Stream</h2>
+                    <h2 data-i18n="liveDataStream">Live Data Stream</h2>
                 </div>
                 <div class="live-data-view">
                     <div class="live-data-grid">
@@ -180,10 +181,10 @@
                             <div class="live-data-body">
                                 <div class="live-value-large" id="liveTemp">28°C</div>
                                 <div class="live-data-details">
-                                    <p>Current: <strong id="liveTempCurrent">28</strong>°C</p>
-                                    <p>Min (24h): <strong>22°C</strong></p>
-                                    <p>Max (24h): <strong>35°C</strong></p>
-                                    <p>Avg (24h): <strong>26.5°C</strong></p>
+                                    <p><span data-i18n="currentLabel">Current:</span> <strong id="liveTempCurrent">28</strong>°C</p>
+                                    <p><span data-i18n="minLabel">Min (24h):</span> <strong>22°C</strong></p>
+                                    <p><span data-i18n="maxLabel">Max (24h):</span> <strong>35°C</strong></p>
+                                    <p><span data-i18n="avgLabel">Avg (24h):</span> <strong>26.5°C</strong></p>
                                 </div>
                             </div>
                         </div>
@@ -197,10 +198,10 @@
                             <div class="live-data-body">
                                 <div class="live-value-large" id="liveHumidity">65%</div>
                                 <div class="live-data-details">
-                                    <p>Current: <strong id="liveHumidityCurrent">65</strong>%</p>
-                                    <p>Min (24h): <strong>45%</strong></p>
-                                    <p>Max (24h): <strong>88%</strong></p>
-                                    <p>Avg (24h): <strong>68%</strong></p>
+                                    <p><span data-i18n="currentLabel">Current:</span> <strong id="liveHumidityCurrent">65</strong>%</p>
+                                    <p><span data-i18n="minLabel">Min (24h):</span> <strong>45%</strong></p>
+                                    <p><span data-i18n="maxLabel">Max (24h):</span> <strong>88%</strong></p>
+                                    <p><span data-i18n="avgLabel">Avg (24h):</span> <strong>68%</strong></p>
                                 </div>
                             </div>
                         </div>
@@ -239,13 +240,13 @@
             <!-- Graphs Section -->
             <section class="section-content" id="graphs">
                 <div class="section-header">
-                    <h2>Analytics & Trends</h2>
+                    <h2 data-i18n="analyticsTrends">Analytics & Trends</h2>
                 </div>
                 <div class="graphs-container">
                     <!-- Temperature Chart -->
                     <div class="chart-card">
                         <div class="chart-header">
-                            <h3>Temperature Over Time</h3>
+                            <h3 data-i18n="temperatureOverTime">Temperature Over Time</h3>
                             <div class="chart-controls">
                                 <button class="chart-control-btn active" data-range="24h">24h</button>
                                 <button class="chart-control-btn" data-range="7d">7d</button>
@@ -260,7 +261,7 @@
                     <!-- Humidity Chart -->
                     <div class="chart-card">
                         <div class="chart-header">
-                            <h3>Humidity Over Time</h3>
+                            <h3 data-i18n="humidityOverTime">Humidity Over Time</h3>
                             <div class="chart-controls">
                                 <button class="chart-control-btn active" data-range="24h">24h</button>
                                 <button class="chart-control-btn" data-range="7d">7d</button>
@@ -277,20 +278,20 @@
             <!-- History Section -->
             <section class="section-content" id="history">
                 <div class="section-header">
-                    <h2>Historical Data</h2>
+                    <h2 data-i18n="historyData">Historical Data</h2>
                     <button class="download-btn" id="downloadBtn">
-                        <i class="fas fa-download"></i> Download CSV
+                        <i class="fas fa-download"></i> <span data-i18n="downloadCSV">Download CSV</span>
                     </button>
                 </div>
                 <div class="table-container">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Timestamp</th>
-                                <th>Temperature (°C)</th>
-                                <th>Humidity (%)</th>
-                                <th>Status</th>
-                                <th>Notes</th>
+                                <th data-i18n="timestamp">Timestamp</th>
+                                <th data-i18n="temperature">Temperature (°C)</th>
+                                <th data-i18n="humidity">Humidity (%)</th>
+                                <th data-i18n="status">Status</th>
+                                <th data-i18n="notes">Notes</th>
                             </tr>
                         </thead>
                         <tbody id="historyTable">
@@ -323,20 +324,20 @@
             <!-- Alerts Section (Full View) -->
             <section class="section-content" id="alerts">
                 <div class="section-header">
-                    <h2>Alerts & Notifications</h2>
+                    <h2 data-i18n="alertsNotifications">Alerts & Notifications</h2>
                     <div class="filter-controls">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="info">Info</button>
-                        <button class="filter-btn" data-filter="warning">Warning</button>
-                        <button class="filter-btn" data-filter="danger">Danger</button>
+                        <button class="filter-btn active" data-filter="all" data-i18n="all">All</button>
+                        <button class="filter-btn" data-filter="info" data-i18n="info">Info</button>
+                        <button class="filter-btn" data-filter="warning" data-i18n="warning">Warning</button>
+                        <button class="filter-btn" data-filter="danger" data-i18n="danger">Danger</button>
                     </div>
                 </div>
                 <div class="alerts-full-list" id="alertsFullList">
                     <div class="alert-item info-alert">
                         <i class="fas fa-info-circle"></i>
                         <div class="alert-content">
-                            <p class="alert-title">System Active</p>
-                            <p class="alert-message">Real-time monitoring is running smoothly</p>
+                            <p class="alert-title" data-i18n="systemActive">System Active</p>
+                            <p class="alert-message" data-i18n="realTimeRunning">Real-time monitoring is running smoothly</p>
                         </div>
                         <span class="alert-time">Just now</span>
                     </div>
@@ -346,21 +347,21 @@
             <!-- Settings Section -->
             <section class="section-content" id="settings">
                 <div class="section-header">
-                    <h2>Settings & Configuration</h2>
+                    <h2 data-i18n="settingsConfiguration">Settings & Configuration</h2>
                 </div>
                 <div class="settings-container">
                     <!-- Threshold Settings -->
                     <div class="settings-card">
-                        <h3>Alert Thresholds</h3>
+                        <h3 data-i18n="alertThresholds">Alert Thresholds</h3>
                         <div class="setting-item">
-                            <label for="humidityRiskThreshold">Humidity Risk Level (%)</label>
+                            <label for="humidityRiskThreshold" data-i18n="humidityRiskLevel">Humidity Risk Level (%)</label>
                             <div class="input-group">
                                 <input type="range" id="humidityRiskThreshold" min="50" max="80" value="70" class="slider">
                                 <span class="threshold-value" id="riskValue">70</span>%
                             </div>
                         </div>
                         <div class="setting-item">
-                            <label for="humidityDangerThreshold">Humidity Danger Level (%)</label>
+                            <label for="humidityDangerThreshold" data-i18n="humidityDangerLevel">Humidity Danger Level (%)</label>
                             <div class="input-group">
                                 <input type="range" id="humidityDangerThreshold" min="75" max="95" value="85" class="slider">
                                 <span class="threshold-value" id="dangerValue">85</span>%
@@ -370,50 +371,50 @@
 
                     <!-- Notification Settings -->
                     <div class="settings-card">
-                        <h3>Notifications</h3>
+                        <h3 data-i18n="notifications">Notifications</h3>
                         <div class="setting-item checkbox">
                             <label for="emailNotifications">
                                 <input type="checkbox" id="emailNotifications" checked>
-                                <span>Email Notifications</span>
+                                <span data-i18n="emailNotifications">Email Notifications</span>
                             </label>
                         </div>
                         <div class="setting-item checkbox">
                             <label for="smsNotifications">
                                 <input type="checkbox" id="smsNotifications">
-                                <span>SMS Notifications</span>
+                                <span data-i18n="smsNotifications">SMS Notifications</span>
                             </label>
                         </div>
                         <div class="setting-item checkbox">
                             <label for="pushNotifications">
                                 <input type="checkbox" id="pushNotifications" checked>
-                                <span>Push Notifications</span>
+                                <span data-i18n="pushNotifications">Push Notifications</span>
                             </label>
                         </div>
                     </div>
 
                     <!-- System Settings -->
                     <div class="settings-card">
-                        <h3>System Preferences</h3>
+                        <h3 data-i18n="systemPreferences">System Preferences</h3>
                         <div class="setting-item">
-                            <label for="updateFrequency">Data Update Frequency</label>
+                            <label for="updateFrequency" data-i18n="dataUpdateFrequency">Data Update Frequency</label>
                             <select id="updateFrequency" class="select-input">
-                                <option value="1">Every 1 second</option>
-                                <option value="5" selected>Every 5 seconds</option>
-                                <option value="10">Every 10 seconds</option>
-                                <option value="30">Every 30 seconds</option>
+                                <option value="1" data-i18n="freq1">Every 1 second</option>
+                                <option value="5" selected data-i18n="freq5">Every 5 seconds</option>
+                                <option value="10" data-i18n="freq10">Every 10 seconds</option>
+                                <option value="30" data-i18n="freq30">Every 30 seconds</option>
                             </select>
                         </div>
                         <div class="setting-item checkbox">
                             <label for="dataEncryption">
                                 <input type="checkbox" id="dataEncryption" checked disabled>
-                                <span>Data Encryption (Always On)</span>
+                                <span data-i18n="dataEncryption">Data Encryption (Always On)</span>
                             </label>
                         </div>
                     </div>
 
                     <!-- Save Settings Button -->
                     <button class="save-settings-btn" id="saveSettingsBtn">
-                        <i class="fas fa-save"></i> Save Settings
+                        <i class="fas fa-save"></i> <span data-i18n="saveSettings">Save Settings</span>
                     </button>
                 </div>
             </section>
@@ -429,6 +430,10 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

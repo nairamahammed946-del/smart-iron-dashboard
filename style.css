@@ -84,7 +84,7 @@ body {
    3. LOGIN PAGE STYLES
    ============================================ */
 
-.login-page {
+.login-page, .signup-page {
     background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
     min-height: 100vh;
     display: flex;
@@ -173,6 +173,47 @@ body {
     border-radius: 1rem;
     box-shadow: var(--shadow-xl);
     animation: scaleIn 0.6s ease-out;
+}
+
+.page-switch-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.page-switch {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--navy);
+    font-size: 0.9rem;
+}
+
+.page-switch a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color var(--transition-fast);
+}
+
+.page-switch a:hover {
+    color: var(--blue-dark);
+}
+
+.lang-toggle {
+    border: 1px solid rgba(13, 27, 42, 0.15);
+    border-radius: 999px;
+    background-color: var(--white);
+    color: var(--navy);
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+}
+
+.lang-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .login-card h2 {
@@ -1038,8 +1079,11 @@ body {
     background-color: var(--white);
     border-radius: 1rem;
     box-shadow: var(--shadow-md);
-    overflow: hidden;
+    overflow-x: auto;
     animation: slideInUp 0.5s ease-out;
+}
+.data-table {
+    min-width: 720px;
 }
 
 .data-table {
@@ -1406,6 +1450,119 @@ body {
     50% {
         transform: translateY(-10px);
     }
+}
+
+@media (max-width: 1100px) {
+    .login-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .login-left {
+        order: 2;
+        text-align: center;
+    }
+
+    .login-right {
+        order: 1;
+    }
+
+    .login-card {
+        padding: 2rem;
+    }
+
+    .dashboard-page {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+    }
+
+    .top-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .header-right {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .content-wrapper {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 1.75rem;
+    }
+
+    .page-switch-top {
+        justify-content: center;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .header-right {
+        gap: 1rem;
+    }
+
+    .cards-grid,
+    .graphs-container,
+    .live-data-grid,
+    .alerts-list,
+    .alerts-full-list,
+    .settings-container {
+        gap: 1rem;
+    }
+
+    .data-card,
+    .live-data-card,
+    .chart-card,
+    .settings-card,
+    .alerts-container,
+    .table-container {
+        padding: 1.25rem;
+    }
+
+    .data-table {
+        min-width: 100%;
+    }
+
+    .toast-container {
+        right: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+    }
+}
+
+[dir='rtl'] {
+    direction: rtl;
+}
+
+[dir='rtl'] .login-card,
+[dir='rtl'] .sidebar,
+[dir='rtl'] .top-header,
+[dir='rtl'] .section-header,
+[dir='rtl'] .form-group,
+[dir='rtl'] .footer {
+    text-align: right;
+}
+
+[dir='rtl'] .form-options {
+    justify-content: space-between;
 }
 
 @keyframes spin {
