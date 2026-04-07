@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Iron Guarding System - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <i class="fas fa-burn"></i>
+                <span>Iron Guard</span>
+            </div>
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#live-data" class="nav-item" data-section="live-data">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>Live Data</span>
+            </a>
+            <a href="#graphs" class="nav-item" data-section="graphs">
+                <i class="fas fa-chart-line"></i>
+                <span>Graphs</span>
+            </a>
+            <a href="#history" class="nav-item" data-section="history">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#alerts" class="nav-item" data-section="alerts">
+                <i class="fas fa-bell"></i>
+                <span>Alerts</span>
+                <span class="alert-badge" id="alertBadge">3</span>
+            </a>
+            <a href="#settings" class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="logout-btn" id="logoutBtn" title="Logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <h1 id="sectionTitle">Dashboard</h1>
+                <p class="header-subtitle" id="sectionSubtitle">Real-time monitoring and analytics</p>
+            </div>
+            <div class="header-right">
+                <div class="connection-status">
+                    <div class="status-dot connected" id="statusDot"></div>
+                    <span id="statusText">Connected</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=2196F3&color=fff" alt="User" class="profile-pic">
+                    <span class="user-name" id="userName">Admin User</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Sections -->
+        <div class="content-wrapper">
+            <!-- Dashboard Section -->
+            <section class="section-content active" id="dashboard">
+                <div class="section-header">
+                    <h2>Real-time Monitoring</h2>
+                    <span class="last-update">Last updated: <span id="lastUpdate">just now</span></span>
+                </div>
+
+                <!-- Live Data Cards -->
+                <div class="cards-grid">
+                    <!-- Temperature Card -->
+                    <div class="data-card temperature-card" id="tempCard">
+                        <div class="card-header">
+                            <h3>Temperature</h3>
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="card-value">
+                            <span class="value" id="tempValue">28</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="status-text">Optimal Range</span>
+                            <span class="trend-indicator">
+                                <i class="fas fa-arrow-up"></i> 2.3%
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Humidity Card -->
+                    <div class="data-card humidity-card" id="humidityCard">
+                        <div class="card-header">
+                            <h3>Humidity</h3>
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <div class="card-value">
+                            <span class="value" id="humidityValue">65</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="status-text">Normal</span>
+                            <span class="trend-indicator">
+                                <i class="fas fa-arrow-down"></i> 1.1%
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Status Card -->
+                    <div class="data-card status-card" id="statusCard">
+                        <div class="card-header">
+                            <h3>Iron Status</h3>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="status-display">
+                            <div class="status-badge safe" id="statusBadge">
+                                <i class="fas fa-check-circle"></i>
+                                <span id="statusLabel">Safe</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="status-description" id="statusDescription">All systems nominal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Section -->
+                <div class="alerts-container">
+                    <div class="section-header">
+                        <h3>Active Alerts</h3>
+                        <button class="clear-alerts-btn" id="clearAlertsBtn">Clear All</button>
+                    </div>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="alert-item info-alert">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="alert-content">
+                                <p class="alert-title">System Active</p>
+                                <p class="alert-message">Real-time monitoring is running smoothly</p>
+                            </div>
+                            <span class="alert-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Data Section -->
+            <section class="section-content" id="live-data">
+                <div class="section-header">
+                    <h2>Live Data Stream</h2>
+                </div>
+                <div class="live-data-view">
+                    <div class="live-data-grid">
+                        <!-- Temperature Details -->
+                        <div class="live-data-card">
+                            <div class="live-data-header">
+                                <i class="fas fa-thermometer-half"></i>
+                                <h3>Temperature</h3>
+                            </div>
+                            <div class="live-data-body">
+                                <div class="live-value-large" id="liveTemp">28°C</div>
+                                <div class="live-data-details">
+                                    <p>Current: <strong id="liveTempCurrent">28</strong>°C</p>
+                                    <p>Min (24h): <strong>22°C</strong></p>
+                                    <p>Max (24h): <strong>35°C</strong></p>
+                                    <p>Avg (24h): <strong>26.5°C</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Humidity Details -->
+                        <div class="live-data-card">
+                            <div class="live-data-header">
+                                <i class="fas fa-droplet"></i>
+                                <h3>Humidity</h3>
+                            </div>
+                            <div class="live-data-body">
+                                <div class="live-value-large" id="liveHumidity">65%</div>
+                                <div class="live-data-details">
+                                    <p>Current: <strong id="liveHumidityCurrent">65</strong>%</p>
+                                    <p>Min (24h): <strong>45%</strong></p>
+                                    <p>Max (24h): <strong>88%</strong></p>
+                                    <p>Avg (24h): <strong>68%</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Status -->
+                        <div class="live-data-card">
+                            <div class="live-data-header">
+                                <i class="fas fa-heartbeat"></i>
+                                <h3>System Status</h3>
+                            </div>
+                            <div class="live-data-body">
+                                <div class="system-status-indicators">
+                                    <div class="status-item">
+                                        <span class="indicator-label">Sensor 1:</span>
+                                        <span class="status-indicator online">Online</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="indicator-label">Sensor 2:</span>
+                                        <span class="status-indicator online">Online</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="indicator-label">Connection:</span>
+                                        <span class="status-indicator online">Connected</span>
+                                    </div>
+                                    <div class="status-item">
+                                        <span class="indicator-label">Data Updates:</span>
+                                        <span class="status-indicator online">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Graphs Section -->
+            <section class="section-content" id="graphs">
+                <div class="section-header">
+                    <h2>Analytics & Trends</h2>
+                </div>
+                <div class="graphs-container">
+                    <!-- Temperature Chart -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Temperature Over Time</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn active" data-range="24h">24h</button>
+                                <button class="chart-control-btn" data-range="7d">7d</button>
+                                <button class="chart-control-btn" data-range="30d">30d</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="temperatureChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Humidity Chart -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Humidity Over Time</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn active" data-range="24h">24h</button>
+                                <button class="chart-control-btn" data-range="7d">7d</button>
+                                <button class="chart-control-btn" data-range="30d">30d</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="humidityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="section-content" id="history">
+                <div class="section-header">
+                    <h2>Historical Data</h2>
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download CSV
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Temperature (°C)</th>
+                                <th>Humidity (%)</th>
+                                <th>Status</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTable">
+                            <tr>
+                                <td>2026-04-07 14:30:45</td>
+                                <td>28</td>
+                                <td>65</td>
+                                <td><span class="status-badge safe">Safe</span></td>
+                                <td>Normal operation</td>
+                            </tr>
+                            <tr>
+                                <td>2026-04-07 14:25:30</td>
+                                <td>27</td>
+                                <td>68</td>
+                                <td><span class="status-badge safe">Safe</span></td>
+                                <td>Normal operation</td>
+                            </tr>
+                            <tr>
+                                <td>2026-04-07 14:20:15</td>
+                                <td>29</td>
+                                <td>72</td>
+                                <td><span class="status-badge warning">Risk</span></td>
+                                <td>Humidity increasing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Alerts Section (Full View) -->
+            <section class="section-content" id="alerts">
+                <div class="section-header">
+                    <h2>Alerts & Notifications</h2>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="info">Info</button>
+                        <button class="filter-btn" data-filter="warning">Warning</button>
+                        <button class="filter-btn" data-filter="danger">Danger</button>
+                    </div>
+                </div>
+                <div class="alerts-full-list" id="alertsFullList">
+                    <div class="alert-item info-alert">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="alert-content">
+                            <p class="alert-title">System Active</p>
+                            <p class="alert-message">Real-time monitoring is running smoothly</p>
+                        </div>
+                        <span class="alert-time">Just now</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="section-content" id="settings">
+                <div class="section-header">
+                    <h2>Settings & Configuration</h2>
+                </div>
+                <div class="settings-container">
+                    <!-- Threshold Settings -->
+                    <div class="settings-card">
+                        <h3>Alert Thresholds</h3>
+                        <div class="setting-item">
+                            <label for="humidityRiskThreshold">Humidity Risk Level (%)</label>
+                            <div class="input-group">
+                                <input type="range" id="humidityRiskThreshold" min="50" max="80" value="70" class="slider">
+                                <span class="threshold-value" id="riskValue">70</span>%
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="humidityDangerThreshold">Humidity Danger Level (%)</label>
+                            <div class="input-group">
+                                <input type="range" id="humidityDangerThreshold" min="75" max="95" value="85" class="slider">
+                                <span class="threshold-value" id="dangerValue">85</span>%
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting-item checkbox">
+                            <label for="emailNotifications">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span>Email Notifications</span>
+                            </label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <label for="smsNotifications">
+                                <input type="checkbox" id="smsNotifications">
+                                <span>SMS Notifications</span>
+                            </label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <label for="pushNotifications">
+                                <input type="checkbox" id="pushNotifications" checked>
+                                <span>Push Notifications</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- System Settings -->
+                    <div class="settings-card">
+                        <h3>System Preferences</h3>
+                        <div class="setting-item">
+                            <label for="updateFrequency">Data Update Frequency</label>
+                            <select id="updateFrequency" class="select-input">
+                                <option value="1">Every 1 second</option>
+                                <option value="5" selected>Every 5 seconds</option>
+                                <option value="10">Every 10 seconds</option>
+                                <option value="30">Every 30 seconds</option>
+                            </select>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <label for="dataEncryption">
+                                <input type="checkbox" id="dataEncryption" checked disabled>
+                                <span>Data Encryption (Always On)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Save Settings Button -->
+                    <button class="save-settings-btn" id="saveSettingsBtn">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
